@@ -9,7 +9,7 @@ import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn
 import { PropertyStatus } from "../enum/property.status.enum";
 
 @Entity({name:"property"})
-export class PropertyEntity extends GenericEntity{
+export class PropertyEntity {
 @PrimaryGeneratedColumn()
 id:number
 @Column({length:100})

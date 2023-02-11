@@ -20,12 +20,12 @@ export const typeormConfig:TypeOrmModuleOptions ={
 
 
     type: 'mysql',
-    host: 'sql313.epizy.com',
+    host: 'sql.freedb.tech',
     port: 3306,
-    username: 'epiz_33570204',
-    password: 'ldSXXDF7KY8lY55',
-    database: 'epiz_33570204_realEstate',
-    
+    username: 'freedb_mongithabet1234',
+    password: 'zBCT*c22%jG@T*C',
+    database: 'freedb_realEstate',
+
     entities: [User,NeighborhoodEntity,VilleEntity,PriceEntity,FeaturelistEntity,AreaEntity,VideosEntity,AgentEntity, LocalisationEntity,SocialEntity,PropertyEntity,GalleryEntity,ClientEntity,HouseEntity,TestimonialEntity,AgentEntity ,FeaturesEntity],
 
     synchronize: true,
