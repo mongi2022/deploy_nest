@@ -19,11 +19,11 @@ import { FeaturelistTerrainEntity } from "src/modules/featuresListTerrain/entity
 
 export const typeormConfig:TypeOrmModuleOptions ={
 
-   type: 'mysql',
+    type: 'mysql',
     host: 'sql.freedb.tech',
     port: 3306,
-    username: 'freedb_freedb_mongithabet1234',
-    password: '&2saMsfPF&?dhAP',
+    username: 'freedb_mongithabet1234',
+    password: '?zWs&G#3K?@3jxF',
     database: 'freedb_realestate2',
     entities: [User,NeighborhoodEntity,FeaturelistTerrainEntity,VilleEntity,PriceEntity,FeaturelistEntity,AreaEntity,VideosEntity,CommentEntity, LocalisationEntity,SocialEntity,PropertyEntity,GalleryEntity,ClientEntity,HouseEntity,TestimonialEntity,CommentEntity ,FeaturesEntity],
 
