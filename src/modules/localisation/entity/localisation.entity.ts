@@ -13,7 +13,7 @@ export class LocalisationEntity{
 
 
 
-    @OneToOne(() => PropertyEntity, property => property.location)
+    @OneToOne(() => PropertyEntity, property => property.location,{onDelete:"CASCADE",onUpdate:"CASCADE"})
     @JoinColumn({name:'propertyId'})
 
     property: PropertyEntity; 

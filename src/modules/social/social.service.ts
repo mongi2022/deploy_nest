@@ -1,14 +1,13 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { AgentEntity } from "../agent/entity/agent.entity";
 import { SocialDTO } from "./dto/social.dto";
 import { SocialEntity } from "./entity/social.entity";
 
 @Injectable()
 export class SocialService{
 constructor(@InjectRepository(SocialEntity) private readonly socialRepository:Repository<SocialEntity>,
-            @InjectRepository(AgentEntity) private readonly agentRepository:Repository<AgentEntity>){}
+            ){}
 
 
 getAllSocial(){
@@ -21,11 +20,10 @@ getSocialById(id:number){
 
 async createSocial(agentId:number,socialDTO:SocialDTO){
     
-    const agent = await this.agentRepository.findOne({ where: { id: agentId } });
   
    const agentSaved= await this.socialRepository.create({
     ...socialDTO,
-     agent,
+   
    })
    
    await this.socialRepository.save(agentSaved)

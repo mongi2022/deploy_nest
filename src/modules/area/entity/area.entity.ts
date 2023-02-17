@@ -12,7 +12,7 @@ export class AreaEntity{
     unit:string
 
 
-    @OneToOne(() => PropertyEntity, property => property.area)
+    @OneToOne(() => PropertyEntity, property => property.area,{onDelete:"CASCADE",onUpdate:"CASCADE"})
     @JoinColumn({name:'propertyId'})
 
     property: PropertyEntity; 

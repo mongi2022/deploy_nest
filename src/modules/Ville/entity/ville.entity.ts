@@ -1,6 +1,7 @@
 import { AreaEntity } from "src/modules/area/entity/area.entity";
 import { FeaturesEntity } from "src/modules/features/entity/features.entity";
 import { GalleryEntity } from "src/modules/gallery/entity/gallery.entity";
+import { GenericEntity } from "src/modules/generic/generic.entity";
 import { LocalisationEntity } from "src/modules/localisation/entity/localisation.entity";
 import { NeighborhoodEntity } from "src/modules/neighborhood/entity/neighborhood.entity";
 import { PriceEntity } from "src/modules/price/entity/price.entity";

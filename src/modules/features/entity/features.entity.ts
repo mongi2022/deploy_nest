@@ -8,16 +8,12 @@ export class FeaturesEntity{
     @PrimaryGeneratedColumn()
     id:number
     
-    @Column({
+    @Column({length:50   
     
-    
-        type:'enum',
-        enum:FeatureEnum,
-        default:FeatureEnum.jardin,
     })
     desc:string
     
-    @ManyToOne(type => PropertyEntity, property => property.features)
+    @ManyToOne(type => PropertyEntity, property => property.features,{onDelete:"CASCADE",onUpdate:"CASCADE"})
     property: PropertyEntity;
 
   

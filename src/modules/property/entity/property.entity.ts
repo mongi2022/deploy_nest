@@ -9,12 +9,12 @@ import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn
 import { PropertyStatus } from "../enum/property.status.enum";
 
 @Entity({name:"property"})
-export class PropertyEntity {
+export class PropertyEntity extends GenericEntity{
 @PrimaryGeneratedColumn()
 id:number
-@Column({length:100})
+@Column({length:255,nullable:true})
 title:string
-@Column({length:100})
+@Column({length:255,nullable:true})
 desc:string
 @Column({length:50})
 propertyType:string
@@ -26,58 +26,51 @@ propertyType:string
     default:PropertyStatus.sale,
 })
 propertyStatus:PropertyStatus
-@Column({length:50})
+@Column({length:50,nullable:true})
 city:string
-@Column({length:50})
+@Column({length:50,nullable:true})
 zipCode:string
-@Column({length:50})
+@Column({length:50,nullable:true})
 neighborhood:string
-@Column({length:50})
-street:string
 
-@Column({length:50})
-formattedAddress:string
 
-@OneToMany(type => FeaturesEntity, feature=>feature.property,{cascade:true,eager:true})
+@Column({length:50,nullable:true})
+adresse:string
+
+@OneToMany(type => FeaturesEntity, feature=>feature.property,{eager:true})
 features: FeaturesEntity[];
 
-@Column()
-featured:boolean
 
-@Column()
+@Column({nullable:true})
 
 bedrooms:number
 
-@Column()
+@Column({nullable:true})
 bathrooms:number
-@Column()
+@Column({nullable:true})
 garages:number
 
-@Column()
+@Column({nullable:true})
 yearBuilt:number
-@Column()
-ratingsCount:number
-@Column()
-ratingsValue:number
 
- @OneToMany(type => GalleryEntity, gall=>gall.property,{cascade:true,eager:true})
+
+ @OneToMany(type => GalleryEntity, gall=>gall.property,{eager:true})
  gallery: GalleryEntity[];
 
-@OneToOne(() => LocalisationEntity, location=>location.property,{cascade:true,eager:true})
+@OneToOne(() => LocalisationEntity, location=>location.property,{eager:true})
 location: LocalisationEntity; 
 
 
-@OneToOne(() => AreaEntity, area=>area.property,{cascade:true,eager:true})
+@OneToOne(() => AreaEntity, area=>area.property,{eager:true})
 area: AreaEntity; 
 
-@OneToOne(() => PriceEntity, price=>price.property,{cascade:true,eager:true})
+
+@OneToOne(() => PriceEntity, price=>price.property,{eager:true})
 priceDollar: PriceEntity; 
 
-@OneToMany(type => VideosEntity, video=>video.property,{cascade:true,eager:true})
+@OneToMany(type => VideosEntity, video=>video.property,{eager:true})
 videos: VideosEntity[];
  
-@Column()
-views:number
 
 
 }

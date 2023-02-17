@@ -35,6 +35,7 @@ async createArea(propertyId:number,areaDTO:AreaDTO){
 
 }
 
+
 async updateArea(id:number, data:Partial<AreaDTO>){
     await this.areaRepository.update(id,data)
     const updatedVideo=await this.areaRepository.findOne({where:{id}})

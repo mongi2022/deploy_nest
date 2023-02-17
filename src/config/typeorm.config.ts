@@ -1,5 +1,5 @@
 import { TypeOrmModuleOptions } from "@nestjs/typeorm";
-import { AgentEntity } from "src/modules/agent/entity/agent.entity";
+import { CommentEntity } from "src/modules/comment/entity/comment.entity";
 import { PropertyEntity } from "src/modules/property/entity/property.entity";
 import { SocialEntity } from "src/modules/social/entity/social.entity";
 import { ClientEntity } from "src/modules/client/entity/client.entity";
@@ -15,17 +15,17 @@ import { VideosEntity } from "src/modules/videos/entity/videos.entity";
 import { FeaturelistEntity } from "src/modules/featuresList/entity/featuresList.entity";
 import { NeighborhoodEntity } from "src/modules/neighborhood/entity/neighborhood.entity";
 import { VilleEntity } from "src/modules/Ville/entity/ville.entity";
+import { FeaturelistTerrainEntity } from "src/modules/featuresListTerrain/entity/featuresListTerrain.entity";
 
 export const typeormConfig:TypeOrmModuleOptions ={
 
-    type: 'mysql',
+   type: 'mysql',
     host: 'sql.freedb.tech',
     port: 3306,
     username: 'freedb_freedb_mongithabet1234',
     password: '&2saMsfPF&?dhAP',
     database: 'freedb_realestate2',
-
-    entities: [User,NeighborhoodEntity,VilleEntity,PriceEntity,FeaturelistEntity,AreaEntity,VideosEntity,AgentEntity, LocalisationEntity,SocialEntity,PropertyEntity,GalleryEntity,ClientEntity,HouseEntity,TestimonialEntity,AgentEntity ,FeaturesEntity],
+    entities: [User,NeighborhoodEntity,FeaturelistTerrainEntity,VilleEntity,PriceEntity,FeaturelistEntity,AreaEntity,VideosEntity,CommentEntity, LocalisationEntity,SocialEntity,PropertyEntity,GalleryEntity,ClientEntity,HouseEntity,TestimonialEntity,CommentEntity ,FeaturesEntity],
 
     synchronize: true,
 }

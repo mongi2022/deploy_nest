@@ -7,7 +7,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.use(cookieParser())
   app.enableCors({
-  origin:'*',
+  origin:'http://localhost:4200',
   credentials:true
  })
  const options = new DocumentBuilder()
@@ -18,7 +18,7 @@ async function bootstrap() {
  .build();
 const document = SwaggerModule.createDocument(app, options);
 SwaggerModule.setup('api', app, document);
-  await app.listen(process.env.PORT || 3000,()=>console.log(`server online at http://localhost:3000`)
+  await app.listen(process.env.PORT_API,()=>console.log(`server online at http://localhost:3000`)
   );
 }
 

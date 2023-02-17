@@ -11,7 +11,7 @@ export class GalleryEntity{
     @Column({nullable:true})
     big:string
  
-    @ManyToOne(() => PropertyEntity, (property: PropertyEntity) => property.gallery)
+    @ManyToOne(() => PropertyEntity, (property: PropertyEntity) => property.gallery,{onDelete:"CASCADE",onUpdate:"CASCADE"})
 
     public property: PropertyEntity; 
    

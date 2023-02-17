@@ -11,7 +11,7 @@ export class PriceEntity{
 
     rent:number
 
-    @OneToOne(() => PropertyEntity, property => property.priceDollar)
+    @OneToOne(() => PropertyEntity, property => property.priceDollar,{onDelete:"CASCADE",onUpdate:"CASCADE"})
     @JoinColumn({name:'propertyId'})
     property:PropertyEntity
 

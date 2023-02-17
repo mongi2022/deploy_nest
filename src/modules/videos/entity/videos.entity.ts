@@ -4,11 +4,11 @@ import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm"
 export class VideosEntity{
     @PrimaryGeneratedColumn()
     id:number
-    @Column()
+    @Column({nullable:true})
     name:string
-    @Column()
+    @Column({nullable:true})
     link:string
-    @ManyToOne(() => PropertyEntity, (property: PropertyEntity) => property.videos)
+    @ManyToOne(() => PropertyEntity, (property: PropertyEntity) => property.videos,{onDelete:"CASCADE",onUpdate:"CASCADE"})
      property: PropertyEntity; 
 
 }

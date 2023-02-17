@@ -18,8 +18,8 @@ export class AuthService {
   ) {}
   async signUp(createUserDto: CreateUserDto): Promise<any> {
     // Check if user exists
-    const userExists = await this.usersService.findByUsername(
-      createUserDto.username,
+    const userExists = await this.usersService.findByEmail(
+      createUserDto.email,
     );
     if (userExists) {
       throw new BadRequestException('User already exists');
@@ -31,21 +31,21 @@ export class AuthService {
       ...createUserDto,
       password: hash,
     });
-    const tokens = await this.getTokens(newUser.id, newUser.username);
+    const tokens = await this.getTokens(newUser.id, newUser.email);
     await this.updateRefreshToken(newUser.id, tokens.refreshToken);
     return tokens;
   }
 
   async signIn(data: AuthDto) {
     // Check if user exists
-    const user = await this.usersService.findByUsername(data.username);
+    const user = await this.usersService.findByEmail(data.email);
     if (!user) throw new BadRequestException('User does not exist');
     const passwordMatches =  bcrypt.compare(user.password, data.password);
     if (!passwordMatches)
       throw new BadRequestException('Password is incorrect');
-    const tokens = await this.getTokens(user.id, user.username);
+    const tokens = await this.getTokens(user.id, user.email);
     await this.updateRefreshToken(user.id, tokens.refreshToken);
-    return tokens;
+    return {tokens:tokens,userId:user.email,username:user.name};
   }
 
   async logout(userId: number) {
@@ -61,7 +61,7 @@ export class AuthService {
       refreshToken,
     );
     if (!refreshTokenMatches) throw new ForbiddenException('Access Denied');
-    const tokens = await this.getTokens(user.id, user.username);
+    const tokens = await this.getTokens(user.id, user.email);
     await this.updateRefreshToken(user.id, tokens.refreshToken);
     return tokens;
   }
@@ -79,12 +79,12 @@ export class AuthService {
     });
   }
 
-  async getTokens(userId: number, username: string) {
+  async getTokens(userId: number, email: string) {
     const [accessToken, refreshToken] = await Promise.all([
       this.jwtService.signAsync(
         {
           sub: userId,
-          username,
+          email,
         },
         {
           secret: process.env.JWT_ACCESS_SECRET,
@@ -94,7 +94,7 @@ export class AuthService {
       this.jwtService.signAsync(
         {
           sub: userId,
-          username,
+          email,
         },
         {
           secret: process.env.JWT_REFRESH_SECRET,
