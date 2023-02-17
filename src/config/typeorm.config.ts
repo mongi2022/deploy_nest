@@ -19,6 +19,7 @@ import { FeaturelistTerrainEntity } from "src/modules/featuresListTerrain/entity
 
 export const typeormConfig:TypeOrmModuleOptions ={
 
+ 
     type: 'mysql',
     host: 'sql.freedb.tech',
     port: 3306,
